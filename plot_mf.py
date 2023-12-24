@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import skfuzzy as fuzz
 
@@ -13,7 +14,6 @@ def message_spam_mf():
     definite_spam = fuzz.trapmf(frequency, [60,80, 100, 100])
 
     # Visualize the membership functions
-    import matplotlib.pyplot as plt
 
     plt.figure()
     plt.plot(frequency, not_spam, 'b', label='Not Spam')
@@ -34,7 +34,6 @@ def subject_spam_mf():
     definite_spam = fuzz.trapmf(frequency, [60,80, 100, 100])
 
     # Visualize the membership functions
-    import matplotlib.pyplot as plt
 
     plt.figure()
     plt.plot(frequency, not_spam, 'b', label='Not Spam')
