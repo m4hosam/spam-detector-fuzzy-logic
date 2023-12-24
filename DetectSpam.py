@@ -46,29 +46,6 @@ def calculate_body_spam_score(email_body):
       albert_spam_prob = round(albert_spam_prob*100, 3)
 
 
-   
-
-    # print(f"subject_spam_score: {subject_spam_score}")
-    # print(f"albert_output: {albert_output}")
-    # print(f"albert-spam-filter score: {albert_spam_prob}")
-
-    # # Set input values for the fuzzy logic system
-    # spam_detector.input['albert_spam_probability'] = albert_spam_prob
-    # spam_detector.input['subject_spam_score'] = subject_spam_score
-
-    #check if fuzzyfication is working properly
-    #print(spam_detector.input['albert_spam_probability'])
-    #print(spam_detector.input['subject_spam_score'])
-
-    #check which rules are being activated
-    #print(spam_detector.rules)
-
-    # Compute the result
-    # spam_detector.compute()
-
-    # Get the final spam probability
-    # final_spam_prob = spam_detector.output['final_spam_probability']
-
     return albert_spam_prob
 
 
@@ -76,7 +53,7 @@ def calculate_body_spam_score(email_body):
 if __name__ == '__main__':
     
     # Test the spam detector
-    email_subject = "Claim 100% more free money now!"
+    email_subject = "Invitation to Exclusive Webinar"
     email_body = "Hello, Thank you for your interest in our product. We are happy to offer you a 20% discount on your next purchase. Please click on the link below to claim your discount."
     # Calculate spam term frequency score for email subject
     spam_words = {'claim', 'free', 'win', 'offer', 'click', 'money'}
@@ -90,8 +67,4 @@ if __name__ == '__main__':
     spamfuz.fuzzy_initialize()
     spam_score_fuzzy = spamfuz.fuzzy_predict(albert_output, subject_spam_score)
 
-    #email_body = "Subject: jennifer sends them to their final destination . designated as a private key 4 . validate public keys . someone wants to meet you ! who your match could be , find here to the purported owner . you"
-    # spam_probability = test_spam_detector(email_subject, email_body)
-    # spam_probability = round(spam_probability, 3)
-    # print(f"Spam Probability: {spam_probability}%")
     exit(0)

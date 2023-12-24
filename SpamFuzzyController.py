@@ -68,7 +68,7 @@ class SpamFuzzyController:
         # Crunch the numbers
         spam_percentage.compute()
 
-        print(" albert_spam_probability - {0} | tfidf_score = {1} | Fuzzy Prediction = {2}".format(albert_spam_probability, tfidf_score_proba,
+        print(" albert_spam_probability - {0} | tfidf_score = {1} | Spam Fuzzy Prediction = {2}".format(albert_spam_probability, tfidf_score_proba,
                                                                                       spam_percentage.output[
                                                                                           'Spam_Prediction']))
         final_spam_score = spam_percentage.output['Spam_Prediction']
