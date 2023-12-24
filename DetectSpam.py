@@ -1,64 +1,65 @@
-
 import math
-from transformers import pipeline
 import nltk
 # nltk.download('stopwords')
 # nltk.download('punkt')
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
+# from nltk.tokenize import word_tokenize
+# from nltk.corpus import stopwords
 from SpamFuzzyController import SpamFuzzyController
 from SpamWords import SpamWords
 import os
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
-spam_filter = pipeline("text-classification", model="NotShrirang/albert-spam-filter")
 
 def sigmoid(x):
     return 1 / (1 + math.exp(-x))
 
-def calculate_subject_spam_score(subject, spam_words):
-    # Tokenize the subject
-    tokens = word_tokenize(subject.lower())
+def calculate_subject_spam_score(subject):
+    # Convert subject to lowercase for case-insensitive matching
+    email_subject_lower = subject.lower().strip()
 
-    # Remove stop words
-    tokens = [word for word in tokens if word.isalnum() and word not in stopwords.words('english')]
+    # Initialize an empty list to store the spam words present in the email subject
+    occurrence_words = ""
 
-    # Calculate the total score based on the presence of spam words
-    total_score = sum(1 for token in tokens if token in spam_words)
+    # Adding the spam words to the list if they are present in the email subject
+    for word in SpamWords:
+        if word.lower() in email_subject_lower:
+            occurrence_words += word.lower() + " "
 
-    # Normalize the score using the sigmoid function
-    normalized_score = sigmoid(total_score - len(spam_words)/2)  # Adjusted the normalization
+    occurrence_words = occurrence_words.strip()
+    # print(f"occurrence_words: {occurrence_words}")
+
+    # devide the characters of the occurence words by the total number of characters in the email subject
+    normalized_score = len(occurrence_words) / len(email_subject_lower)
+    # Calculate the spam term frequency score for email subject
     rounded_score = round(normalized_score*100, 3)
 
     return rounded_score
 
 def calculate_body_spam_score(email_body):
+    from transformers import pipeline
     # Use ALBERT model to get spam probability
+    spam_filter = pipeline("text-classification", model="NotShrirang/albert-spam-filter")
     albert_output = spam_filter(email_body, top_k=2)
 
     print(f"albert_output: {albert_output}")
 
     if albert_output[0]['label'] == 'Spam':
       albert_spam_prob = albert_output[0]['score']
-      albert_spam_prob = round(albert_spam_prob*100, 3)
     else:
       albert_spam_prob = albert_output[1]['score']
-      albert_spam_prob = round(albert_spam_prob*100, 3)
 
-
+    albert_spam_prob = round(albert_spam_prob*100, 3)
     return albert_spam_prob
-
 
 
 if __name__ == '__main__':
     
     # Test the spam detector
-    email_subject = "Invitation to Exclusive Webinar"
-    email_body = "Hello, Thank you for your interest in our product. We are happy to offer you a 20% discount on your next purchase. Please click on the link below to claim your discount."
+    email_subject = "Claim Free money "
+    email_body = "Hello, Thank you for your invite. See you tomorrow."
     # Calculate spam term frequency score for email subject
-    spam_words = {'claim', 'free', 'win', 'offer', 'click', 'money'}
 
-    subject_spam_score = calculate_subject_spam_score(email_subject, spam_words)
+    subject_spam_score = calculate_subject_spam_score(email_subject)
     print(f"subject_spam_score: {subject_spam_score}")
     albert_output = calculate_body_spam_score(email_body)
     print(f"albert_output: {albert_output}")

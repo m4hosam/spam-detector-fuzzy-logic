@@ -91,5 +91,5 @@ if __name__ == '__main__':
     spam_score_fuzzy = spamfuz.fuzzy_predict(90, 40)
     spam_score_fuzzy = spamfuz.fuzzy_predict(45, 70)
     spam_score_fuzzy = spamfuz.fuzzy_predict(70, 60)
-    spam_score_fuzzy = spamfuz.fuzzy_predict(51, 90)
+    spam_score_fuzzy = spamfuz.fuzzy_predict(10, 100)
     exit(0)
