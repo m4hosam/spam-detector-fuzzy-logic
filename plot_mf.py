@@ -24,22 +24,22 @@ def plot_all_membership_functions():
     maybe_spam_subject = fuzz.trimf(frequency, [0, 51, 101])
     definite_spam_subject = fuzz.trimf(frequency, [51, 101, 101])
 
-    # Output membership function using the same trapmf as spam message
-    output_not_spam = fuzz.trapmf(frequency, [0, 0, 20, 40])
-    output_maybe_spam = fuzz.trapmf(frequency, [20, 40, 60, 80])
-    output_definite_spam = fuzz.trapmf(frequency, [60, 80, 100, 100])
+    # Output membership function using Gaussian centered around 50
+    output_not_spam = fuzz.gaussmf(frequency, 0, 20)
+    output_maybe_spam = fuzz.gaussmf(frequency, 50, 20)
+    output_definite_spam = fuzz.gaussmf(frequency, 100, 20)
 
     # Plot all membership functions on the same figure using subplots
-    _, axs = plt.subplots(1, 3, figsize=(15, 5))
+    _, axs = plt.subplots(1, 2, figsize=(15, 5))
 
     # Plot membership functions for message spam
     plot_membership_functions(axs[0], frequency, not_spam_message, maybe_spam_message, definite_spam_message, 'Message Spam Probability')
 
     # Plot membership functions for subject spam
-    plot_membership_functions(axs[1], frequency, not_spam_subject, maybe_spam_subject, definite_spam_subject, 'Subject Spam Probability')
+    # plot_membership_functions(axs[1], frequency, not_spam_subject, maybe_spam_subject, definite_spam_subject, 'Subject Spam Probability')
 
     # Plot membership functions for output
-    plot_membership_functions(axs[2], frequency, output_not_spam, output_maybe_spam, output_definite_spam, 'Output Membership Function')
+    plot_membership_functions(axs[1], frequency, output_not_spam, output_maybe_spam, output_definite_spam, 'Output Membership Function')
 
     plt.tight_layout()
     plt.show()
