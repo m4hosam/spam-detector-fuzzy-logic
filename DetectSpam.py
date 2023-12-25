@@ -55,17 +55,32 @@ if __name__ == '__main__':
     # Test the spam detector
     # print(email_examples[0]['subject'])
     # print(email_examples[0]['body'])
+    # Testing
+    for email in email_examples:
+        # print(f"subject: {email['subject']}")
+        # print(f"body: {email['body']}")
+        print(f"spam: {email['spam']}")
+        subject_spam_score = calculate_subject_spam_score(email['subject'])
+        albert_output = calculate_body_spam_score(email['body'])
+        spamfuz = SpamFuzzyController()
+        spamfuz.fuzzy_initialize()
+        spam_score_fuzzy = spamfuz.fuzzy_predict(albert_output, subject_spam_score)
+        print(f"subject spam score: {subject_spam_score}", "% spam")
+        print(f"spam model output: {albert_output}", "% spam")
+        print("Spam Score Fuzzy: ", spam_score_fuzzy, "% spam")
+        print("-------------------------------------------------")
+
 
     # Calculate spam term frequency score for email subject
-    subject_spam_score = calculate_subject_spam_score(email_examples[0]['subject'])
-    albert_output = calculate_body_spam_score(email_examples[0]['body'])
+    # subject_spam_score = calculate_subject_spam_score(email_examples[8]['subject'])
+    # albert_output = calculate_body_spam_score(email_examples[8]['body'])
 
-    spamfuz = SpamFuzzyController()
-    spamfuz.fuzzy_initialize()
-    spam_score_fuzzy = spamfuz.fuzzy_predict(albert_output, subject_spam_score)
+    # spamfuz = SpamFuzzyController()
+    # spamfuz.fuzzy_initialize()
+    # spam_score_fuzzy = spamfuz.fuzzy_predict(albert_output, subject_spam_score)
 
-    print(f"\n\nsubject spam score: {subject_spam_score}", "% spam")
-    print(f"spam model output: {albert_output}", "% spam")
-    print("Spam Score Fuzzy: ", spam_score_fuzzy, "% spam")
+    # print(f"subject spam score: {subject_spam_score}", "% spam")
+    # print(f"spam model output: {albert_output}", "% spam")
+    # print("Spam Score Fuzzy: ", spam_score_fuzzy, "% spam")
 
     exit(0)

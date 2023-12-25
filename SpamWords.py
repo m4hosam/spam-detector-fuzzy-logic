@@ -9,7 +9,7 @@ SpamWords = [
     'Million dollars', 'Miracle', 'Money back', 'Once in a lifetime', 'One time', 'Pennies a day',
     'Potential earnings', 'Prize', 'Promise', 'Pure profit', 'Risk-free', 'Satisfaction guaranteed',
     'Save big money', 'Save up to', 'Special promotion', 'Act now', 'Apply now', 'Become a member', 'Call now',
-    'Click below', 'Click here', 'Get it now', 'Do it today', 'Don’t delete', 'Exclusive deal', 'Get started now',
+    'Click below', 'Click here', 'Get it now', 'Do it today', 'Don’t delete', 'Exclusive deal',"Exclusive Event","Exclusive Limited-Time", 'Get started now',
     'Important information regarding', 'Information you requested', 'Instant', 'Limited time', 'New customers only',
     'Order now', 'Please read', 'See for yourself', 'Sign up free', 'Take action', 'This won’t last', 'Urgent',
     'What are you waiting for?', 'While supplies last', 'Will not believe your eyes', 'Winner', 'Winning',
@@ -23,9 +23,9 @@ SpamWords = [
     'This isn’t spam', 'Undisclosed', 'Unsecured credit', 'Unsecured debt', 'Unsolicited', 'Valium', 'Viagra',
     'Vicodin', 'We hate spam', 'Weight loss', 'Xanax', 'Accept credit cards', 'Ad', 'All new', 'As seen on',
     'Bargain', 'Beneficiary', 'Billing', 'Bonus', 'Cards accepted', 'Cash', 'Certified', 'Cheap', 'Claims',
-    'Clearance', 'Compare rates', 'Credit card offers', 'Deal', 'Debt', 'Discount', 'Fantastic',
+    'Clearance', 'Compare rates', 'Credit card offers', 'Deal', 'Debt',  'Fantastic',
     'In accordance with laws', 'Income', 'Investment', 'Join millions', 'Lifetime', 'Loans', 'Luxury',
     'Marketing solution', 'Message contains', 'Mortgage rates', 'Name brand', 'Offer', 'Online marketing',
     'Opt in', 'Pre-approved', 'Quote', 'Rates', 'Refinance', 'Removal', 'Reserves the right', 'Score',
     'Search engine', 'Sent in compliance', 'Subject to…', 'Terms and conditions', 'Trial', 'Unlimited',
-    'Warranty', 'Web traffic', 'Work from home']
+    'Warranty', 'Web traffic', 'Work from home', "Flash Sale Alert", "Biggest Discounts Inside", "VIP Access"]

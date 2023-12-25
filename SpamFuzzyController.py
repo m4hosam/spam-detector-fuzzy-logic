@@ -6,7 +6,7 @@ class SpamFuzzyController:
     _spam_percentage = None
 
     def __init__(self):
-        print('\n\nInitializing Fuzzy Logic')
+        print('\nInitializing Fuzzy Logic\n')
 
     def fuzzy_initialize(self):
         # Creating two fuzzy input variables and one output fuzzy variable
