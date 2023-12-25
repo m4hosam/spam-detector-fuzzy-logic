@@ -12,7 +12,7 @@ email_examples = [
     {
         "subject": "Exclusive Premium Membership Offer",
         "body": "Dear Michael Brown, We are thrilled to extend an exclusive offer to join our premium membership program. This elite program is tailored to provide an unmatched experience for our discerning customers. As a premium member, you'll enjoy a plethora of benefits such as: - Personalized assistance from our dedicated concierge team - Access to exclusive events and VIP experiences - Special discounts and promotions on premium products - Priority booking and reservations at partner establishments Elevate your lifestyle with our premium membership. Enroll now and embark on a journey of unparalleled luxury and convenience! Warm regards, Olivia Garcia",
-        "spam": "no"
+        "spam": "maybe"
     },
     {
         "subject": "Your Feedback Matters!",

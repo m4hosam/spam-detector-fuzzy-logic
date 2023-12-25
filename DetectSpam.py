@@ -13,23 +13,18 @@ logging.getLogger('transformers').setLevel(logging.ERROR)
 def calculate_subject_spam_score(subject):
     # Convert subject to lowercase for case-insensitive matching
     email_subject_lower = subject.lower().strip()
-
-    # Initialize an empty list to store the spam words present in the email subject
+    # Initialize an empty string to store the spam words present in the email subject
     occurrence_words = ""
-
     # Adding the spam words to the list if they are present in the email subject
     for word in SpamWords:
         if word.lower() in email_subject_lower:
             occurrence_words += word.lower() + " "
 
     occurrence_words = occurrence_words.strip()
-    # print(f"occurrence_words: {occurrence_words}")
-
-    # devide the characters of the occurence words by the total number of characters in the email subject
+    # characters of the occurence words / the total number of characters in the email subject
     normalized_score = len(occurrence_words) / len(email_subject_lower)
     # Calculate the spam term frequency score for email subject
     rounded_score = round(normalized_score*100, 3)
-
     return rounded_score
 
 def calculate_body_spam_score(email_body):
@@ -37,8 +32,6 @@ def calculate_body_spam_score(email_body):
     spam_filter = pipeline("text-classification", model="NotShrirang/albert-spam-filter")
     # spam_filter = pipeline("text-classification", model="mshenoda/roberta-spam")
     albert_output = spam_filter(email_body, top_k=2)
-
-    # print(f"albert_output: {albert_output}")
 
     # if albert_output[0]['label'] == 'LABEL_1':
     if albert_output[0]['label'] == 'Spam':
@@ -55,6 +48,7 @@ if __name__ == '__main__':
     # Test the spam detector
     # print(email_examples[0]['subject'])
     # print(email_examples[0]['body'])
+    
     # Testing
     for email in email_examples:
         # print(f"subject: {email['subject']}")
