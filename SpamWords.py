@@ -1,5 +1,5 @@
 SpamWords = [
-    '100% more', 'claim',  'win', 'offer', '100% free', '100% satisfied', 'Additional income', 'Be your own boss', 'Best price',
+    '100% more', 'claim',  'win', '100% free', '100% satisfied', 'Additional income', 'Be your own boss', 'Best price',
     'Big bucks', 'Billion', 'Cash bonus', 'Cents on the dollar', 'Consolidate debt', 'Double your cash',
     'Double your income', 'Earn extra cash', 'Earn money', 'Eliminate bad credit', 'Extra cash',
     'Extra income', 'Expect to earn', 'Fast cash', 'Financial freedom', 'Free access', 'Free consultation',

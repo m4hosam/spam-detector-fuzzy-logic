@@ -30,16 +30,16 @@ def plot_all_membership_functions():
     output_definite_spam = fuzz.gaussmf(frequency, 100, 20)
 
     # Plot all membership functions on the same figure using subplots
-    _, axs = plt.subplots(1, 2, figsize=(15, 5))
+    _, axs = plt.subplots(1, 3, figsize=(15, 5))
 
     # Plot membership functions for message spam
     plot_membership_functions(axs[0], frequency, not_spam_message, maybe_spam_message, definite_spam_message, 'Message Spam Probability')
 
     # Plot membership functions for subject spam
-    # plot_membership_functions(axs[1], frequency, not_spam_subject, maybe_spam_subject, definite_spam_subject, 'Subject Spam Probability')
+    plot_membership_functions(axs[1], frequency, not_spam_subject, maybe_spam_subject, definite_spam_subject, 'Subject Spam Probability')
 
     # Plot membership functions for output
-    plot_membership_functions(axs[1], frequency, output_not_spam, output_maybe_spam, output_definite_spam, 'Output Membership Function')
+    plot_membership_functions(axs[2], frequency, output_not_spam, output_maybe_spam, output_definite_spam, 'Output Membership Function')
 
     plt.tight_layout()
     plt.show()

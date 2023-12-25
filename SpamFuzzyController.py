@@ -60,15 +60,16 @@ class SpamFuzzyController:
         predict_control = ctrl.ControlSystem([rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9])
         self._spam_percentage = ctrl.ControlSystemSimulation(predict_control)
 
-    def fuzzy_predict(self, albert_spam_probability, tfidf_score_proba):
+    def fuzzy_predict(self, albert_spam_probability, subject_spam_proba):
         spam_percentage = self._spam_percentage
+
         spam_percentage.input['albert_spam_probability'] = albert_spam_probability
-        spam_percentage.input['subject_spam_score'] = tfidf_score_proba
+        spam_percentage.input['subject_spam_score'] = subject_spam_proba
 
         # Crunch the numbers
         spam_percentage.compute()
 
-        # print(" albert_spam_probability - {0} | subject_spam_score = {1} | Spam Fuzzy Prediction = {2}".format(albert_spam_probability, tfidf_score_proba,
+        # print(" albert_spam_probability - {0} | subject_spam_score = {1} | Spam Fuzzy Prediction = {2}".format(albert_spam_probability, subject_spam_proba,
         #                                                                               spam_percentage.output[
         #                                                                                   'Spam_Prediction']))
         final_spam_score = spam_percentage.output['Spam_Prediction']
