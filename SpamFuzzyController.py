@@ -15,20 +15,20 @@ class SpamFuzzyController:
         predict_spam = ctrl.Consequent(np.arange(0, 100, 1), 'Spam_Prediction')
 
         # Creating memberships for tweet model - Input Variable
-        albert_spam_probability['not_spam'] = fuzz.trapmf(albert_spam_probability.universe, [0,0, 20, 40])
-        albert_spam_probability['maybe_spam'] = fuzz.trapmf(albert_spam_probability.universe, [20,40, 60, 80])
-        albert_spam_probability['definite_spam'] = fuzz.trapmf(albert_spam_probability.universe, [60,80, 100, 100])
-        # albert_spam_probability['not_spam'] = fuzz.trimf(albert_spam_probability.universe, [0, 0, 49])
-        # albert_spam_probability['maybe_spam'] = fuzz.trimf(albert_spam_probability.universe, [50, 50, 101])
-        # albert_spam_probability['definite_spam'] = fuzz.trimf(albert_spam_probability.universe, [50, 101, 101])
+        # albert_spam_probability['not_spam'] = fuzz.trapmf(albert_spam_probability.universe, [0,0, 20, 40])
+        # albert_spam_probability['maybe_spam'] = fuzz.trapmf(albert_spam_probability.universe, [20,40, 60, 80])
+        # albert_spam_probability['definite_spam'] = fuzz.trapmf(albert_spam_probability.universe, [60,80, 100, 100])
+        albert_spam_probability['not_spam'] = fuzz.trimf(albert_spam_probability.universe, [0, 0, 49])
+        albert_spam_probability['maybe_spam'] = fuzz.trimf(albert_spam_probability.universe, [50, 50, 101])
+        albert_spam_probability['definite_spam'] = fuzz.trimf(albert_spam_probability.universe, [50, 101, 101])
         
         # Creating memberships for user model - Input Variable
-        # tfidf_score['not_spam'] = fuzz.trapmf(tfidf_score.universe, [0,0, 20, 40])
-        # tfidf_score['maybe_spam'] = fuzz.trapmf(tfidf_score.universe, [20,40, 60, 80])
-        # tfidf_score['definite_spam'] = fuzz.trapmf(tfidf_score.universe, [60,80, 100, 100])
-        tfidf_score['not_spam'] = fuzz.trimf(tfidf_score.universe, [0, 0, 51])
-        tfidf_score['maybe_spam'] = fuzz.trimf(tfidf_score.universe, [0, 51, 101])
-        tfidf_score['definite_spam'] = fuzz.trimf(tfidf_score.universe, [51, 101, 101])
+        tfidf_score['not_spam'] = fuzz.trapmf(tfidf_score.universe, [0,0, 20, 40])
+        tfidf_score['maybe_spam'] = fuzz.trapmf(tfidf_score.universe, [20,40, 60, 80])
+        tfidf_score['definite_spam'] = fuzz.trapmf(tfidf_score.universe, [60,80, 100, 100])
+        # tfidf_score['not_spam'] = fuzz.trimf(tfidf_score.universe, [0, 0, 51])
+        # tfidf_score['maybe_spam'] = fuzz.trimf(tfidf_score.universe, [0, 51, 101])
+        # tfidf_score['definite_spam'] = fuzz.trimf(tfidf_score.universe, [51, 101, 101])
 
         # Creating memberships for tweet model - Output Variable
         predict_spam['not_spam'] = fuzz.trapmf(predict_spam.universe, [0,0, 20, 40])

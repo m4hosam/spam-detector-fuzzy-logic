@@ -10,8 +10,6 @@ import os
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 
-def sigmoid(x):
-    return 1 / (1 + math.exp(-x))
 
 def calculate_subject_spam_score(subject):
     # Convert subject to lowercase for case-insensitive matching
